@@ -1,0 +1,16 @@
+Angular uses the Decorator design pattern 
+we have class diecorators  that indicate the component and class and directive ex:@component- @Directive
+we have also function diecorators like @Hostlistner 
+we have also Property Decorator like @input
+==========Component Lifecycle
+1- constructor ==> used for Property Intializtion and DI 
+2- ngOnchages ==> detect any changes in the values of input paramter {@input}
+3-ngOnInit ==> used for any thing that i need to run when the component run 
+4-ngDocheck ===> 
+5-ngAfterViewInit ==> handle any thing that related to view 
+6-ngOnDestroy
+
+all of those function are interfaces that i make the class implement and that enforce me to 
+use functions inside the class 
+
+=========================================================

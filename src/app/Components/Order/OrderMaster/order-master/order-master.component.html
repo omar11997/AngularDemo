@@ -1,0 +1,20 @@
+<h2>Create Your Order</h2>
+<div class="mb-3">
+  <label for="prdCat" class="form-label"> Category:</label>
+  <select
+    class="form-control"
+    name="cat"
+    id="prdCat"
+    [(ngModel)]="selectedCatId"
+  >
+    <option value="0">All</option>
+    <option *ngFor="let cat of catList" [value]="cat.id">{{ cat.name }}</option>
+  </select>
+</div>
+<div class="bg-warning">
+  <!-- make property binding on the sentcatid prop -->
+  <app-product-list [sentCatId]="selectedCatId"></app-product-list>
+</div>
+
+<hr />
+<h3>Order Total Price: {{ orderTotalPrice }}</h3>

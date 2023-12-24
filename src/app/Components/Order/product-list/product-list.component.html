@@ -1,0 +1,78 @@
+<!-- <div class="mb-3">
+  <label for="prdCat" class="form-label"> Category:</label>
+  <select
+    class="form-control"
+    name="cat"
+    id="prdCat"
+    [(ngModel)]="selectedCatId"
+    (change)="filterProductsByCatId()"
+  >
+    <option value="0">All</option>
+    <option *ngFor="let cat of catList" [value]="cat.id">{{ cat.name }}</option>
+  </select>
+</div> -->
+<!-- <h3>{{ selectedCatId }}</h3> -->
+<hr />
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Available Quantity</th>
+      <th scope="col">Price</th>
+      <th>Count</th>
+      <th>Buy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr
+      *ngFor="let item of prdList; trackBy: prdTrackFn"
+      [class.d-none]="selectedCatId != item.cateogryId"
+      [style.background-color]="item.quantity == 0 ? 'yellow' : 'lightgray'"
+    > -->
+    <tr
+      *ngFor="let item of catPrdList; trackBy: prdTrackFn"
+      [style.background-color]="item.quantity == 0 ? 'darkgray' : 'lightgray'"
+    >
+      <!-- <tr
+      *ngFor="let item of prdList; trackBy: prdTrackFn"
+      [ngStyle]="{
+        'background-color': item.price > 500 ? 'lightgary' : 'darkgray',
+        'font-weight': 'bold'
+      }"
+    > -->
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.name }}</td>
+      <!-- <td><img Lightbox highlightColor="blue" [src]="item.imageUrl" /></td> -->
+      <td><img Lightbox="blue" defaultColor="red" [src]="item.imageUrl" /></td>
+      <td>
+        <!-- <div *ngIf="item.quantity != 0; else outOfStock">
+          {{ item.quantity }}
+        </div>
+        <ng-template #outOfStock>out of Stock</ng-template> -->
+        <div [ngSwitch]="item.quantity">
+          <div *ngSwitchCase="0">Out Of Stock</div>
+          <div *ngSwitchCase="1">Last Item</div>
+          <div *ngSwitchCase="2">Last two items</div>
+          <div *ngSwitchDefault>{{ item.quantity }}</div>
+        </div>
+      </td>
+      <td>{{ item.price | currency : "EUR" }}</td>
+      <td><input class="form-contorl" type="number" #productCount /></td>
+      <td>
+        <button
+          class="btn btn-secondary"
+          (click)="buy(item.price, productCount.value)"
+        >
+          Buy
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- <hr />
+<h3>Order Total Price: {{ orderTotalPrice }}</h3> -->
+
+<!-- Structrula Directives changes dom but class binding just change change element to be hidden 
+so it is better in performance -->

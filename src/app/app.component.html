@@ -2,13 +2,20 @@
 <!-- <h1>Hello Angular {{ title }}</h1> -->
 <!-- Function interpolation -->
 <!-- <h1>{{ sayHello() }}</h1> -->
-<app-header></app-header>
+<!-- <app-header></app-header>
 <div class="container-fluid ps-0">
   <section class="row">
-    <app-sidebar class="col-2"></app-sidebar>
-    <!-- <app-home class="col-10"></app-home> -->
-    <!-- <app-product-list class="col-10"></app-product-list> -->
-    <app-order-master class="col-10"></app-order-master>
-  </section>
+    <app-sidebar class="col-2"></app-sidebar> -->
+<!-- <app-home class="col-10"></app-home> -->
+<!-- <app-product-list class="col-10"></app-product-list> -->
+<!-- <app-order-master class="col-10"></app-order-master> -->
+<app-header></app-header>
+<div class="col-10">
+  <router-outlet>
+    <!-- the place that inside it any angular will indicate the component will open in which place 
+        {according to path in the AppRoutingModule class} -->
+  </router-outlet>
 </div>
-<app-footer></app-footer>
+<!-- </section>
+</div>
+<app-footer></app-footer> -->

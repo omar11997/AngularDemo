@@ -1,0 +1,17 @@
+<button
+  class="btn btn-success m-3"
+  type="button"
+  (click)="logIn()"
+  [disabled]="isUserLogged"
+>
+  Log In
+</button>
+
+<button
+  class="btn btn-success m-3"
+  type="button"
+  (click)="logOut()"
+  [disabled]="!isUserLogged"
+>
+  Log Out
+</button>

@@ -22,6 +22,7 @@
       <th scope="col">Available Quantity</th>
       <th scope="col">Price</th>
       <th>Count</th>
+      <th>Details</th>
       <th>Buy</th>
     </tr>
   </thead>
@@ -60,6 +61,20 @@
       </td>
       <td>{{ item.price | currency : "EUR" }}</td>
       <td><input class="form-contorl" type="number" #productCount /></td>
+      <!-- <td>
+        <button class="btn btn-secondary" (click)="openProductDetails(item.id)">
+          Details
+        </button>
+      </td> -->
+      <td>
+        <a
+          class="btn btn-success"
+          role="button"
+          [routerLink]="['/product', item.id]"
+        >
+          Details</a
+        >
+      </td>
       <td>
         <button
           class="btn btn-secondary"

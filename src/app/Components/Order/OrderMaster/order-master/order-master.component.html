@@ -13,8 +13,16 @@
 </div>
 <div class="bg-warning">
   <!-- make property binding on the sentcatid prop -->
-  <app-product-list [sentCatId]="selectedCatId"></app-product-list>
+  <app-product-list
+    [sentCatId]="selectedCatId"
+    (totalPriceChange)="onTotalPriceChnage($event)"
+  ></app-product-list>
 </div>
 
 <hr />
-<h3>Order Total Price: {{ orderTotalPrice }}</h3>
+<h3>Order Total Price: {{ receivedOrderTotalPrice }}</h3>
+<div>
+  <h3>enter you name :</h3>
+  <input type="text" class="form-control" #clientNameInput />
+  <hr />
+</div>

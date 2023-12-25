@@ -12,6 +12,12 @@ import { FormsModule } from '@angular/forms';
 import { LightboxDirective } from './Directives/lightbox.directive';
 import { CurrencyTransformPipe } from './Directives/Pipes/currency-transform.pipe';
 import { OrderMasterComponent } from './Components/Order/OrderMaster/order-master/order-master.component';
+import { StaticProductsService } from './Services/static-products.service';
+import { LoginComponent } from './Components/Login/Login.component';
+import { NotFoundComponentComponent } from './Components/NotFound/NotFoundComponent/NotFoundComponent.component';
+import { LayoutComponent } from './Components/Layout/Layout.component';
+import { ProductDetailsComponent } from './Components/Order/product-details/product-details.component';
+import { UserLogComponent } from './Components/user-log/user-log.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +31,17 @@ import { OrderMasterComponent } from './Components/Order/OrderMaster/order-maste
     LightboxDirective,
     CurrencyTransformPipe,
     OrderMasterComponent,
+    LoginComponent,
+    NotFoundComponentComponent,
+    LayoutComponent,
+    ProductDetailsComponent,
+    UserLogComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  ////you can inject service inside this provider {when creating this module will create new instance from the service }
+  providers: [
+    // ex . StaticProductsService
+  ],
   ///Bootstrap indicate which component that it will starts with
   bootstrap: [AppComponent],
 })

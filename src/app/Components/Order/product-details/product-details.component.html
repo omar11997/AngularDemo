@@ -1,0 +1,11 @@
+<div class="card" style="width: 18rem">
+  <img class="card-img-top" [src]="product?.imageUrl" alt="Card image cap" />
+  <div class="card-body">
+    <h5 class="card-title">{{ product?.name }}</h5>
+    <div class="card-text">
+      <div>Price : {{ product?.price }}</div>
+      <div>Quantity : {{ product?.quantity }}</div>
+    </div>
+    <button class="btn btn-secondary" (click)="goBack()">Back To List</button>
+  </div>
+</div>

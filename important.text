@@ -14,3 +14,7 @@ all of those function are interfaces that i make the class implement and that en
 use functions inside the class 
 
 =========================================================
+===> Routing {Navigation}
+1- handle inside AppRoutingModule {add paths and components}
+2- handle View in the navbar or wherever
+

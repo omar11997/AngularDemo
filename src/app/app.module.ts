@@ -18,6 +18,8 @@ import { NotFoundComponentComponent } from './Components/NotFound/NotFoundCompon
 import { LayoutComponent } from './Components/Layout/Layout.component';
 import { ProductDetailsComponent } from './Components/Order/product-details/product-details.component';
 import { UserLogComponent } from './Components/user-log/user-log.component';
+import {HttpClientModule} from '@angular/common/http';
+import { AddProductComponent } from './Components/add-product/add-product.component'
 
 @NgModule({
   declarations: [
@@ -36,8 +38,9 @@ import { UserLogComponent } from './Components/user-log/user-log.component';
     LayoutComponent,
     ProductDetailsComponent,
     UserLogComponent,
+    AddProductComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule,HttpClientModule],
   ////you can inject service inside this provider {when creating this module will create new instance from the service }
   providers: [
     // ex . StaticProductsService

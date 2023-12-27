@@ -7,6 +7,8 @@ import { NotFoundComponentComponent } from './Components/NotFound/NotFoundCompon
 import { LoginComponent } from './Components/Login/Login.component';
 import { LayoutComponent } from './Components/Layout/Layout.component';
 import { ProductDetailsComponent } from './Components/Order/product-details/product-details.component';
+import { AuthGuard } from './Gaurds/auth.guard';
+import { AddProductComponent } from './Components/add-product/add-product.component';
 
 const routes: Routes = [
   ////this array works with first-match strategy {so the ararnge inside this array is very important}
@@ -19,8 +21,9 @@ const routes: Routes = [
       { path: '', redirectTo: '/Home', pathMatch: 'full' }, ///Handle default path
       { path: 'Home', component: HomeComponent },
       { path: 'product', component: ProductListComponent },
-      { path: 'product/:pid', component: ProductDetailsComponent },
-      { path: 'order', component: OrderMasterComponent },
+      { path: 'product/:pid{number}', component: ProductDetailsComponent,pathMatch:"full" },
+      { path: 'addproduct', component: AddProductComponent, pathMatch:"full" },
+      { path: 'order', component: OrderMasterComponent, canActivate: [AuthGuard] },
     ],
   },
   //this paths will open directly without layout

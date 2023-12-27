@@ -11,6 +11,7 @@ import { Route, Router } from '@angular/router';
 import { ICategory } from 'src/app/Models/icategory';
 import { IProduct } from 'src/app/Models/iproduct';
 import { StaticProductsService } from 'src/app/Services/static-products.service';
+import { ProductsService } from 'src/app/Services/ProductService/products.service';
 
 @Component({
   selector: 'app-product-list',
@@ -32,7 +33,8 @@ export class ProductListComponent implements OnInit, OnChanges {
 
   constructor(
     private staticProductService: StaticProductsService,
-    private router: Router
+    private router: Router,
+    private productService : ProductsService
   ) {
     // this.prdList = [
     //   {
@@ -96,13 +98,21 @@ export class ProductListComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     // this.filterProductsByCatId();
-    this.catPrdList = this.staticProductService.getProductByCatId(
-      this.sentCatId
-    );
+    // this.catPrdList = this.staticProductService.getProductByCatId(
+    //   this.sentCatId
+    // );
+    ///////subscribe of the observable of the service
+    this.productService.getproductsByCatId(this.sentCatId).subscribe((prodcuts) =>{
+      this.catPrdList = prodcuts;
+    });
   }
 
   ngOnInit(): void {
-    this.catPrdList = this.staticProductService.getAllProducts();
+    //this.catPrdList = this.staticProductService.getAllProducts();
+
+    this.productService.getAllProducts().subscribe(products =>{
+      this.catPrdList = products;
+    });
   }
   buy(productPrice: number, count: any) {
     this.orderTotalPrice += Number(count) * productPrice;

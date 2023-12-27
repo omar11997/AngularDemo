@@ -1,4 +1,5 @@
 import { Injectable, booleanAttribute } from '@angular/core';
+import { Route } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UserAuthenticationService {
   private isLoggedSubject: BehaviorSubject<boolean>;
   constructor() {
-    this.isLoggedSubject = new BehaviorSubject<boolean>(false);
+    this.isLoggedSubject = new BehaviorSubject<boolean>(this.isUserLogged);
   }
 
   logIn(userName: string, passwaor: number) {
@@ -15,6 +16,7 @@ export class UserAuthenticationService {
     let userToken = '123456789';
     localStorage.setItem('token', userToken);
     this.isLoggedSubject.next(true);
+    
   }
   logOut() {
     localStorage.removeItem('token');
@@ -24,7 +26,7 @@ export class UserAuthenticationService {
     // if (localStorage.getItem('token')) return true;
     // return false;
 
-    return localStorage.getItem('token') ? true : false;
+    return (localStorage.getItem('token')) ? true : false;
   }
   isUserLoggedSubject(): Observable<boolean> {
     ////Indicate that the subject will return as observable only
